@@ -1,6 +1,6 @@
 /**
  * @file ListIterator.h
- * @author your name (you@sdsu.edu) (RedID)
+ * @author your name bshiroma1290@sdsu.edu 129846870
  * @brief This file contains the declaration and definition of the ListIterator class.
  * @date Date Last Modified Here
  */
@@ -24,12 +24,24 @@ class ListIterator {
 
 private:
     // TODO: Pointer to the current node
+    Node<T> *itptr;
 
 public:
     // TODO: Constructors
+    ListIterator() {
+        itptr = nullptr;
+    }
+
+    ListIterator(const ListIterator<T>& q) {
+        itptr = q.itptr;
+    }
+
+    ListIterator(Node<T> *q) {
+        itptr = q;
+    }
 
     // TODO: Operator Overloads
-
+    
 };
 
 #endif

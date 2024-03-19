@@ -1,4 +1,5 @@
-
+#ifndef NODE_H
+#define NODE_H
 /**
  * @brief Node Class
  * 
@@ -6,13 +7,15 @@
  * 
  * @todo You need to convert this Node class to take in a generic template type T for data.
  */
+template<typename T>
 class Node {
     public:
-        int data;
+        T data;
         Node *next;
         
-        Node(int newData) {
+        Node(T newData) {
             data = newData;
             next = nullptr;
         }
 };
+#endif
