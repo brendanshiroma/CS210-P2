@@ -7,7 +7,7 @@
  * 
  * @todo You need to convert this Node class to take in a generic template type T for data.
  */
-template<typename T>
+template<class T>
 class Node {
     public:
         T data;

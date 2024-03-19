@@ -68,7 +68,9 @@ class LinkedList {
          * @todo Implement this method. Conditions to handle: bad index, empty list, one item, insert at beginning, in the middle, at the end
          */
         void addAt(int index, T obj) {
-
+            if (index > currentSize || index < 0) {
+                throw std::runtime_error "Error: addAt bad index";
+            }
         }
 
         /**
