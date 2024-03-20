@@ -1,6 +1,6 @@
 /**
  * @file LinkedListPQ.h
- * @author your name (you@sdsu.edu) (RedID)
+ * @author your name bshiroma1290@sdsu.edu 129846870
  * @brief This file contains the declaration and definitions of the LinkedListPQ class, which is a priority queue implementation using a linked list.
  * @date Date Last Modified Here
  */
