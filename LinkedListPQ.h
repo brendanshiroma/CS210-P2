@@ -28,6 +28,46 @@ private:
     LinkedList<T> *pq;
 
 public:
+
+T remove() {
+
+}
+
+bool deleteAll(T obj) {
+
+}
+
+T peek() {
+
+}
+
+bool contains(T obj) {
+
+}
+
+int size() {
+
+}
+
+void clear() {
+
+}
+
+bool isEmpty() {
+
+}
+
+bool isFull() {
+
+}
+
+ListIterator<T> first() {
+
+}
+
+ListIterator<T> end() {
+    
+}
     
 };
 #endif

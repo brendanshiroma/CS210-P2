@@ -27,7 +27,6 @@ class LinkedList {
     private: 
         Node<T> *head;
         Node<T> *tail;
-        Node<T> *curr;
         int currentSize;
 
     public: 
@@ -37,7 +36,7 @@ class LinkedList {
         * 
         * @note Initializes the head and tail to nullptr and currentSize to 0
        */
-        LinkedList() : head(nullptr), tail(head), curr(head), currentSize(0) { }
+        LinkedList() : head(nullptr), tail(head), currentSize(0) { }
 
         /**
          * @brief Returns the number of items in the list
@@ -69,10 +68,17 @@ class LinkedList {
          * @todo Implement this method. Conditions to handle: bad index, empty list, one item, insert at beginning, in the middle, at the end
          */
         void addAt(int index, T obj) {
+            Node<T> *curr = head;
+            Node<T> *newNode = new Node<T>(obj);
             if (index >= currentSize || index < 0) {
                 throw std::runtime_error("Error: addAt bad index");
             }
-            
+            for (int i = 0; i < index - 1; i++) {
+                curr = curr->next;
+            }
+            curr->next = newNode;
+            newNode->next = curr->next->next;
+            currentSize++;
         }
 
         /**
@@ -132,10 +138,11 @@ class LinkedList {
          * @todo Implement this method. Note that right now it's just returning a bogus value to avoid a compiler error.
          */
         T peekLast() {
+            Node<T> *curr = head;
             if (isEmpty()) {
                 throw std::runtime_error("Error: peeklast empty list");
             }
-            while (curr != nullptr) {
+            while (curr->data != nullptr) {
                 curr = curr->next;
             }
             T tmp = curr;
@@ -153,7 +160,7 @@ class LinkedList {
          * @todo Implement this method. Conditions to handle: bad index, empty list, one item, remove at beginning, in the middle, at the end
          */
         void removeAt(int index) {
-            Node<T> *prev = nullptr;
+            Node<T> *prev = nullptr, *curr = head;
             if (isEmpty()) {
                 throw std::runtime_error("Error: removeAt empty list");
             }
@@ -240,8 +247,9 @@ class LinkedList {
          * @todo Implement this method. Note that right now it's just returning a bogus value to avoid a compiler error.
          */
         int find(T obj) {
+            Node<T> *curr = head;
             int index = 0;
-            while (curr != nullptr) {
+            while (curr != tail) {
                 if (curr->data == obj) {
                     return index;
                 }
@@ -273,7 +281,10 @@ class LinkedList {
          * @note To free memory, must call for each node: `delete theNodeToDelete;`
          */
         void makeEmpty() {
+            Node<T> *curr = head;
+            while(curr->data != nullptr) {
 
+            }
         }
 
         /**
@@ -327,10 +338,23 @@ class LinkedList {
          * @todo Implement this method.
          */
         void removeAll(T obj) {
-            whlie(curr != nullptr) {
-                if (curr == obj) {
-                    //need to create prev to be behind curr
+            Node<T> *prev = nullptr, *curr = head;
+            if(head->data == obj) {
+                curr = head->next;
+                prev = head;
+                head = curr;
+                currentSize--;
+            } else {
+                curr = curr->next;
+                prev = head;
+            }
+            whlie(curr->data != nullptr) {
+                if ((curr->data) == obj) {
+                    prev->next = curr->next;
+                    currentSize--;
                 }
+                prev = curr; 
+                curr = curr->next;
             }
         }
         
