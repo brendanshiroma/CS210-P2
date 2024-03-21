@@ -24,50 +24,62 @@
 template<class T>
 class LinkedListPQ : public PriorityQueue<T> {
 
-private:
-    LinkedList<T> *pq;
+    private:
+        LinkedList<T> *pq;
+        int size;
 
-public:
+    public:
 
-T remove() {
+    bool insert(T object) {
+        pq->addLast();
+        return true;
+    }
 
-}
+    T remove() {
+        if (isEmpty()) {
+            throw std::invalid_argument("Cannot remove from empty queue");
+        }
+        return pq->removeLast();
+    }
 
-bool deleteAll(T obj) {
+    bool deleteAll(T obj) {
+        return pq->removeAll(obj)//fix this
+    }
 
-}
+    T peek() {
+        if (isEmpty()) {
+            throw std::invalid_argument("Cannot peek from empty queue");
+        }
+        return pq->peekLast();
+    }
 
-T peek() {
+    bool contains(T obj) {
+        return pq->contains();
+    }
 
-}
+    int size() {
+        return pq->size();
+    }
 
-bool contains(T obj) {
+    void clear() {
+        pq->makeEmpty();
+    }
 
-}
+    bool isEmpty() {
+        return pq->isEmpty();
+    }
 
-int size() {
+    bool isFull() {
+        return pq->isFull();
+    }
 
-}
+    ListIterator<T> first() {
+        return pq->first();
+    }
 
-void clear() {
-
-}
-
-bool isEmpty() {
-
-}
-
-bool isFull() {
-
-}
-
-ListIterator<T> first() {
-
-}
-
-ListIterator<T> end() {
-    
-}
+    ListIterator<T> end() {
+        return pq->end();
+    }
     
 };
 #endif
